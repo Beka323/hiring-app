@@ -7,7 +7,7 @@ export class UserController {
   constructor(private readonly userService:UserService ){}
 
 @Post("signin")
-creatAccount(@Body() body:createAccountDto):string{
+creatAccount(@Body() body:createAccountDto):createAccountDto{
   return this.userService.createAccount(body)
 }
 @Post("login")
