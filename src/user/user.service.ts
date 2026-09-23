@@ -4,7 +4,7 @@ import { createAccountDto, loginDto} from "./user_Dto/users.dto.js"
 @Injectable()
 export class UserService{
      createAccount(account:createAccountDto):createAccountDto{
-        console.log(account)
+       // console.log(account)
 return account
 }
 login(body:loginDto):loginDto{
