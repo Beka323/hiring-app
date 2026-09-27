@@ -1,23 +1,28 @@
 import { Module } from '@nestjs/common';
 import { UserModule } from "./user/user.module.js"
-import { DrizzleModule } from '@nestjs/drizzle';
-import { drizzle } from 'drizzle-orm/node-postgres';
 import { from } from 'rxjs';
 import { ConfigModule,ConfigService } from "@nestjs/config"
+import { TypeOrmModule } from "@nestjs/typeorm" 
+import { UserEntity } from './user/user-db/user-entity.js';
 @Module({
-  imports: [ConfigModule.forRoot({
+  imports:[UserModule,ConfigModule.forRoot({
     isGlobal:true
-  }),
-  UserModule,
- DrizzleModule.forRootAsync({
+  }),TypeOrmModule.forRootAsync({
     imports:[ConfigModule],
     inject:[ConfigService],
-    useFactory:async (configService:ConfigService) => ({
-      drizzle,
-      connection:configService.getOrThrow<string>("DATABASE_URL")
+    useFactory:(configService:ConfigService) => ({
+      type:'postgres',
+      host:configService.getOrThrow<string>("DB_HOST"),
+      port:configService.getOrThrow<number>("DB_PORT"),
+      username:configService.getOrThrow<string>("DB_USERNAME"),
+      password:configService.getOrThrow<string>("DB_PASSWORD"),
+      database:configService.getOrThrow<string>("DB"),
+      entities:[UserEntity],
+      synchronize:true
     })
   })],
-  controllers: [],
-  providers: []
+controllers:[],
+providers:[]
 })
+
 export class AppModule {}
