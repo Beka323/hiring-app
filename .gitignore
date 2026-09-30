@@ -2,7 +2,7 @@
 /dist
 /node_modules
 /build
-.vscode
+/.vscode
 .env
 # TypeScript build cache
 *.tsbuildinfo

@@ -26,12 +26,6 @@ export class  createAccountDto{
 export class loginDto {
     @IsEmail()
     Email:string;
-    @MinLength(5,
-    {
-        message:"password is to short"
-    })
-    @MaxLength(15,{
-        message:"password is too long i don't think you can remember that"
-    })
+    @IsString()
     password:string;
 }
