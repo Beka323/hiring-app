@@ -2,9 +2,10 @@ import { Module } from '@nestjs/common';
 import { UserModule } from "./user/user.module.js"
 import { from } from 'rxjs';
 import { ConfigModule, ConfigService } from "@nestjs/config"
-
+import { FormModule } from "./form/form.module.js"
+import { AuthModule } from './auth/auth.module.js';
 @Module({
-imports:[UserModule,ConfigModule.forRoot({
+imports:[UserModule,FormModule,AuthModule,ConfigModule.forRoot({
   isGlobal:true
 })],
 controllers:[],
