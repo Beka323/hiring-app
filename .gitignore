@@ -2,11 +2,11 @@
 /dist
 /node_modules
 /build
-/.vscode
+.vscode/
 .env
-.windsurf
-.agents
-.claude
+.windsurf/
+.agents/
+.claude/
 
 # TypeScript build cache
 *.tsbuildinfo
