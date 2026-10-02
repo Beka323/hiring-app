@@ -2,13 +2,10 @@ import { IsString,IsEmail,Length,MinLength,MaxLength } from "class-validator"
 
 export class  createAccountDto{
     @IsString()
-    userName:string;
+    username:string;
    
     @IsEmail()
-    Email:string;
-   
-    @Length(0,15)
-    phoneNumber:number;
+    email:string;
   
     @IsString()
     @MaxLength(15,{
