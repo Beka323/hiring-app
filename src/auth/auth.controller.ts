@@ -1,4 +1,4 @@
-import { Controller,Post,Body,Get } from "@nestjs/common"
+import { Controller,Post,Body,Put } from "@nestjs/common"
 import { AuthService } from "./auth.service.js";
 import { createUserDto,loginUserDto } from "./auth-dto/auth.dto.js";
 
@@ -9,8 +9,8 @@ export class AuthController{
         private authService:AuthService
     ){}
  @Post("signin")
-    signin(@Body() userInfo:createUserDto ):string {
-      return  this.authService.signin(userInfo)
+  async  signin(@Body() userInfo:createUserDto ):Promise<string> {
+      return this.authService.signin(userInfo)
 }  
 
 
@@ -18,4 +18,15 @@ export class AuthController{
 login(@Body() loginInfo:loginUserDto):string{ 
     return this.authService.login(loginInfo)
 }
+
+@Post("email/verify")
+verifyEmail(){}
+
+@Post("email/verification")
+emailVerification(){}
+
+@Put('/reset-password')
+resetPassword(){}
+
+
 }

@@ -14,7 +14,7 @@ export class  createAccountDto{
     @MinLength(5,{
         message:"password is to short"
     })
-   
+    
     password:string;
 }
 

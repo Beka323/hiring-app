@@ -1,16 +1,10 @@
 import { Injectable } from "@nestjs/common";
-import { createUserDto,loginUserDto } from "./auth-dto/auth.dto.js";
+import { createUserDto,loginUserDto } from "./auth-dto/auth.dto.js"
+import { PrismaService } from "../prisma/prisma.service.js"
 
 @Injectable()
 export class AuthService{
-  /*  findAllUser(user):string{
-         console.log(this.mockDb())
-        
-
-    }
-*/
-    signin(userInfo:createUserDto):string {
-        console.log(userInfo)
+   async signin(userInfo:createUserDto):Promise<string> {
         return 'signin'
     }
     login(loginInfo:loginUserDto):string { 
